@@ -1,15 +1,19 @@
-function exercicioG() {
-   
+function exercicioG(limite) {
 
-    for (let i = 1; i <= 5; i++) {
-       
+  let numeros = "";
+
+  for (let i = 1; i <= limite; i++) {
+    numeros += i;
+
+    if (i < limite) {
+      numeros += ", ";
     }
-    return `
-        Exercício G - Estrutura de repetição<br>
-       
-        Números de 1 a 5: ${[1, 2, 3, 4, 5].join(", ")}
-    `;
-  
+  }
+
+  return `
+    Exercício G - Estrutura de repetição<br>
+    Números de 1 até ${limite}: ${numeros}
+  `;
 }
 
 export { exercicioG };

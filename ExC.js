@@ -1,7 +1,5 @@
-function exercicioC() {
-    let a = 10;
-    let b = 20;
-
+function exercicioC(a, b) {
+    
     let resultado = a > b;
     
     return `

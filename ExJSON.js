@@ -1,3 +1,4 @@
+
 let produtos = [
   {
     "id": 1,
@@ -91,4 +92,4 @@ let produtos = [
   }
 ]
 
-console.log(produtos)
+export { produtos };

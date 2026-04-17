@@ -9,39 +9,93 @@ import { exercicioA } from './ExA.js';
 import { exercicioB } from './ExB.js';
 import { exercicioC } from './ExC.js';
 import { exercicioD } from './ExD.js';
+import { produtos } from './ExJSON.js';
 
-// ROTAS
 
+// /exercicioA?nome=João&idade=16&cidade=SP
 app.get('/exercicioA', (req, res) => {
-    res.send(exercicioA());
+  let { nome, idade, cidade } = req.query;
+
+  res.send(exercicioA(nome, idade, cidade));
 });
 
-app.get('/exercicioB', (req, res) => {
-    res.send(exercicioB());
+app.get('/exercicioB/:A/:B', (req, res) => {
+  let { A, B } = req.params;
+
+  A = Number(A);
+  B = Number(B);
+
+  res.send(exercicioB(A, B));
 });
 
+// /exercicioC?A=10&B=20
 app.get('/exercicioC', (req, res) => {
-    res.send(exercicioC());
+     let { A, B } = req.query;
+  
+    A = Number(A);
+    B = Number(B);
+
+     res.send(exercicioC(A, B));
 });
 
-app.get('/exercicioD', (req, res) => {
-    res.send(exercicioD());
+
+app.get('/exercicioD/:idade', (req, res) => {
+  let { idade } = req.params;
+
+  idade = Number(idade);
+  let carteira = idade >= 18;
+  let resultado = idade >= 18 && carteira;
+
+  res.send(exercicioD(idade, carteira));
 });
 
+// /exercicioE?nota=7
 app.get('/exercicioE', (req, res) => {
-    res.send(exercicioE());
+  let { nota } = req.query;
+
+  nota = Number(nota);
+
+  res.send(exercicioE(nota));
 });
 
-app.get('/exercicioF', (req, res) => {
-    res.send(exercicioF());
+
+app.get('/exercicioF/:dia', (req, res) => {
+    let { dia } = req.params;
+
+    dia = Number(dia);
+
+    res.send(exercicioF(dia));
 });
+
 
 app.get('/exercicioG', (req, res) => {
-    res.send(exercicioG());
+  let { limite } = req.query;
+
+  limite = Number(limite);
+
+  res.send(exercicioG(limite));
 });
 
-app.get('/exercicioH', (req, res) => {
-    res.send(exercicioH());
+app.get('/exercicioH/:vezes', (req, res) => {
+  let { vezes } = req.params;
+
+  vezes = Number(vezes);
+
+  res.send(exercicioH(vezes));
+});
+
+app.get('/produtos/:id', (req, res) => {
+  let { id } = req.params;
+  
+  id = Number(id);
+
+  let produto = produtos.find(p => p.id === id);
+
+  if (!produto) {
+    return res.send("Produto não encontrado");
+  }
+
+  res.json(produto);
 });
 
 // SERVIDOR

@@ -1,8 +1,6 @@
-function exercicioD() {
+function exercicioD(idade, carteira) {
 
 
-    let idade = 18;
-    let carteira = true;
 
     let resultado = idade >= 18 && carteira === true;
     

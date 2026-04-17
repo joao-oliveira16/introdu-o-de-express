@@ -1,7 +1,5 @@
-function exercicioA() {
-    let nome = "João";
-    let idade = 16;
-    let cidade = "SP";
+function exercicioA(nome, idade, cidade) {
+
 
     return `
         Exercício A - Declaração de variáveis<br>
